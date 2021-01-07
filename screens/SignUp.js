@@ -41,7 +41,8 @@ const SignUp = () => {
         <Text
           style={{
             marginLeft: SIZES.padding *1.5,
-            tintColor: COLORS.white,
+            color: COLORS.white, 
+            ...FONTS.h4
           }}
         >
           Sign Up
@@ -74,6 +75,37 @@ const SignUp = () => {
     )
   }
 
+  function renderForm() {
+    return (
+      <View
+        style={{
+          marginTop: SIZES.padding * 3, 
+          marginHorizontal: SIZES.padding * 3, 
+        }}
+      >
+        {/* Full name */}
+        <View style={{marginTop: SIZES.padding * 3}}>
+          <Text style={{color: COLORS.lightGreen, ...FONTS.body3}}>Full Name</Text>
+          <TextInput 
+            style={{
+              marginVertical: SIZES.padding, 
+              borderBottomColor: COLORS.white, 
+              borderBottomWidth: 1, 
+              height: 40, 
+              color: COLORS.white,
+              ...FONTS.body3
+            }}
+            placeholder={'Enter Full Name'}
+            placeholderTextColor={COLORS.white}
+            selectionColor={COLORS.white}
+          />
+
+        </View>
+
+      </View>
+    )
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -86,6 +118,7 @@ const SignUp = () => {
         <ScrollView>
           {renderHeader()}
           {renderLogo()}
+          {renderForm()}
         </ScrollView>
 
       </LinearGradient>
