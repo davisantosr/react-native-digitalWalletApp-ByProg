@@ -69,6 +69,22 @@ const Scan = ({navigation}) => {
     )
   }
 
+  function renderScamFocus() {
+    return (
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Image 
+          source={images.focus}
+          resizeMode={'stretch'}
+          style={{
+            marginTop: '-55%', 
+            width: 200, 
+            height: 300
+          }}
+        />
+      </View>
+    )
+  }
+
   function renderPaymentMethods() {
     return (
       <View
@@ -157,7 +173,7 @@ const Scan = ({navigation}) => {
             </View>
 
             <Text style={{marginLeft: SIZES.padding, ...FONTS.body4,}}>Bar Code</Text>
-            
+
           </TouchableOpacity>
 
         </View>
@@ -184,7 +200,8 @@ const Scan = ({navigation}) => {
           buttonPositive: 'Allow',
         }}
       >
-        {renderHeader()}           
+        {renderHeader()}      
+        {renderScamFocus()}     
         {renderPaymentMethods()}       
       </RNCamera>
     </View>
