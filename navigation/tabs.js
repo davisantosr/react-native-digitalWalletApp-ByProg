@@ -44,6 +44,11 @@ const Tabs = () => {
                 tintColor: focused ? COLORS.white : COLORS.secondary
               }}
             />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton
+              {...props}
+            />
           )
         }}
       />
