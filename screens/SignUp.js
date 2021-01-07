@@ -35,16 +35,12 @@ const SignUp = () => {
             flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
           }
         })
+        console.log(areaData)
 
         setAreas(areaData)
 
-        if(areaData.length > 0) {
-          let defaultData = areaData.filter(a => a.code == 'US')
-
-          if(defaultData.length > 0) {
+          let defaultData = areaData.filter(a => a.code === 'US')
             setSelectedArea(defaultData)
-          }
-        }
       })
   }, [])
 
@@ -161,7 +157,7 @@ const SignUp = () => {
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
                 <Image 
-                  source={{uri: selectedArea?.flag}}
+                  source={{uri: selectedArea[0]?.flag}}
                   resizeMode={'contain'}
                   style={{
                     width: 30,
@@ -170,7 +166,7 @@ const SignUp = () => {
                 />                
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
-                <Text style={{color:COLORS.white, ...FONTS.body3}}>{selectedArea?.callingCodes}</Text>
+                <Text style={{color:COLORS.white, ...FONTS.body3}}>{selectedArea[0]?.callingCodes}</Text>
               </View>
             </TouchableOpacity>
 
@@ -266,6 +262,12 @@ const SignUp = () => {
           {renderLogo()}
           {renderForm()}
           {renderButton()}
+          <View>
+            <Image 
+              source={{uri: areas?.flag}}
+              style={{width: 30, height:30}}
+            />
+          </View>
         </ScrollView>
 
       </LinearGradient>
