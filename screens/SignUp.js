@@ -99,8 +99,54 @@ const SignUp = () => {
             placeholderTextColor={COLORS.white}
             selectionColor={COLORS.white}
           />
+        </View>
+
+        {/* Phone Number  */}
+        <View style={{marginTop: SIZES.padding * 2}}>
+          <Text style={{color: COLORS.lightGreen, ...FONTS.body3}}>Phone Number</Text>
+
+          <View style={{flexDirection: 'row'}}>
+            {/* Country code */}
+            <TouchableOpacity
+              style={{
+                width: 100, 
+                height: 50, 
+                marginHorizontal: 5, 
+                borderBottomColor: COLORS.white,
+                borderBottomWidth: 1,
+                flexDirection: 'row',
+                ...FONTS.body2
+              }}
+              onPress={() => console.log('Show Modal')}
+            >
+              <View style={{justifyContent: 'center'}}>
+                <Image 
+                  source={icons.down}
+                  style={{
+                    width: 10,
+                    height: 10, 
+                    tintColor: COLORS.white
+                  }}
+                />
+              </View>
+              <View style={{justifyContent: 'center', marginLeft: 5}}>
+                <Image 
+                  source={images.usFlag}
+                  resizeMode={'contain'}
+                  style={{
+                    width: 30,
+                    height: 30, 
+                  }}
+                />                
+              </View>
+              <View style={{justifyContent: 'center', marginLeft: 5}}>
+                <Text style={{color:COLORS.white, ...FONTS.body3}}>US+1</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
 
         </View>
+
 
       </View>
     )
