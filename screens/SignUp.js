@@ -12,7 +12,7 @@ import {
   ScrollView,
 } from 'react-native'
 
-import { COLORS, SIZES, theme } from '../constants'
+import { COLORS, SIZES, FONTS,  icons, images, } from '../constants'
 
 const SignUp = () => {
   return (
