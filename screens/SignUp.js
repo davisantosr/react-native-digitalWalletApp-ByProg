@@ -157,7 +157,7 @@ const SignUp = () => {
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
                 <Image 
-                  source={{uri: selectedArea[0]?.flag}}
+                  source={selectedArea ? {uri: selectedArea[0]?.flag} : ''}
                   resizeMode={'contain'}
                   style={{
                     width: 30,
@@ -166,7 +166,7 @@ const SignUp = () => {
                 />                
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
-                <Text style={{color:COLORS.white, ...FONTS.body3}}>{selectedArea[0]?.callingCodes}</Text>
+                <Text style={{color:COLORS.white, ...FONTS.body3}}>{selectedArea ? selectedArea[0]?.callingCodes : ''}</Text>
               </View>
             </TouchableOpacity>
 
