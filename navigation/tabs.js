@@ -21,14 +21,53 @@ const Tabs = () => {
       <Tab.Screen 
         name='Home'
         component={Home}
+        options={{
+          tabBarIcon:({focused})=>(
+            <Image 
+              source={icons.more}
+              resizeMode='contain'
+              style={{
+                width: 25, 
+                height: 25, 
+                tintColor: focused ? COLORS.white : COLORS.secondary
+              }}
+            />
+          )
+        }}
       />
       <Tab.Screen 
         name='Scan'
         component={Scan}
+        options={{
+          tabBarIcon:({focused})=>(
+            <Image 
+              source={icons.scan}
+              resizeMode='contain'
+              style={{
+                width: 25, 
+                height: 25, 
+                tintColor: focused ? COLORS.white : COLORS.secondary
+              }}
+            />
+          )
+        }}
       />
       <Tab.Screen 
         name='User'
         component={Home}
+        options={{
+          tabBarIcon:({focused})=>(
+            <Image 
+              source={icons.user}
+              resizeMode='contain'
+              style={{
+                width: 25, 
+                height: 25, 
+                tintColor: focused ? COLORS.black : COLORS.black
+              }}
+            />
+          )
+        }}
       />
     </Tab.Navigator>
   )
