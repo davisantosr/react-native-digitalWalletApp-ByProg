@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { 
   View, 
   Text,
@@ -17,6 +17,8 @@ import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, SIZES, FONTS,  icons, images, } from '../constants'
 
 const SignUp = () => {
+
+  const [showPassword, setShowPassword] = useState(false)
 
   function renderHeader() {
     return (
@@ -177,7 +179,7 @@ const SignUp = () => {
             placeholder={'Password'}
             placeholderTextColor={COLORS.white}
             selectionColor={COLORS.white}
-            secureTextEntry={true}
+            secureTextEntry={!showPassword}
           />
           <TouchableOpacity
             style={{
@@ -187,10 +189,10 @@ const SignUp = () => {
               height: 30, 
               width: 30,
             }}
-            onPress={() => console.log('Toggle password visib')}
+            onPress={() => setShowPassword(!showPassword)}
           >
             <Image 
-              source={icons.eye}
+              source={showPassword ?icons.disable_eye : icons.eye}
               style={{height: 20, width: 20, tintColor: COLORS.white}}
             />
           </TouchableOpacity>
