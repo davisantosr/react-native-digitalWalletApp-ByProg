@@ -305,6 +305,10 @@ const Home = () => {
         keyExtractor={item => `${item.id}`}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={
+          <View style={{marginBottom:80}}>
+          </View>
+        }
       />
     )
   }
