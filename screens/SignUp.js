@@ -1,5 +1,18 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { 
+  View, 
+  Text,
+  TouchableOpacity, 
+  TouchableWithoutFeedback,
+  Image, 
+  TextInput,
+  Modal, 
+  FlatList, 
+  KeyboardAvoidingView, 
+  ScrollView,
+} from 'react-native'
+
+import { COLORS, SIZES, theme } from '../constants'
 
 const SignUp = () => {
   return (
