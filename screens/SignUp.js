@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView, 
   ScrollView,
   Platform,
+  BackHandler,
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -40,7 +41,7 @@ const SignUp = () => {
         setAreas(areaData)
 
           let defaultData = areaData.filter(a => a.code === 'US')
-            setSelectedArea(defaultData)
+            setSelectedArea(defaultData[0])
       })
   }, [])
 
@@ -143,7 +144,7 @@ const SignUp = () => {
                 flexDirection: 'row',
                 ...FONTS.body2
               }}
-              onPress={() => console.log('Show Modal')}
+              onPress={() => setModalVisible(true)}
             >
               <View style={{justifyContent: 'center'}}>
                 <Image 
@@ -157,7 +158,7 @@ const SignUp = () => {
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
                 <Image 
-                  source={selectedArea ? {uri: selectedArea[0]?.flag} : ''}
+                  source={{uri: selectedArea?.flag}}
                   resizeMode={'contain'}
                   style={{
                     width: 30,
@@ -166,7 +167,7 @@ const SignUp = () => {
                 />                
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
-                <Text style={{color:COLORS.white, ...FONTS.body3}}>{selectedArea ? selectedArea[0]?.callingCodes : ''}</Text>
+                <Text style={{color:COLORS.white, ...FONTS.body3}}>{selectedArea?.callingCodes}</Text>
               </View>
             </TouchableOpacity>
 
@@ -248,6 +249,71 @@ const SignUp = () => {
     )
   }
 
+  function renderAreaCodesModal() {
+    const renderItem = ({item}) => {
+      return (
+        <TouchableOpacity
+          style={{
+            padding: SIZES.padding, 
+            flexDirection:'row'
+          }}
+          onPress={
+            () => {
+              setSelectedArea(item)
+              setModalVisible(false)
+            }
+          }
+        >
+          <Image 
+            source={{uri: item.flag}}
+            style={{
+              width: 30, 
+              height: 30, 
+              marginRight: 10
+            }}
+          />
+          <Text style={{...FONTS.body4}}>{item.name}</Text>
+        </TouchableOpacity>
+      )
+
+    }
+    return(
+      <Modal 
+        animationType={'slide'}
+        transparent={true}
+        visible={modalVisible}
+      >
+        <TouchableWithoutFeedback
+          onPress={() => setModalVisible(false)}
+        >
+          <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View 
+              style={{
+                height: 400,
+                width: SIZES.width * 0.8,
+                backgroundColor: COLORS.lightGreen, 
+                borderRadius: SIZES.radius, 
+              }}>
+                <FlatList 
+                  data={areas}
+                  renderItem={renderItem}
+                  keyExtractor={(item) => item.code}
+                  showsVerticalScrollIndicator={false}
+                  style={{
+                    padding: SIZES.padding *2, 
+                    marginBottom: SIZES.padding *2, 
+                  }}
+
+                />
+
+            </View>
+          </View>
+
+        </TouchableWithoutFeedback>
+      </Modal>
+    )
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -262,14 +328,9 @@ const SignUp = () => {
           {renderLogo()}
           {renderForm()}
           {renderButton()}
-          <View>
-            <Image 
-              source={{uri: areas?.flag}}
-              style={{width: 30, height:30}}
-            />
-          </View>
         </ScrollView>
-
+        
+        {renderAreaCodesModal()}
       </LinearGradient>
     </KeyboardAvoidingView>
   )
