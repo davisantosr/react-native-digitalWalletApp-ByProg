@@ -181,6 +181,11 @@ const Scan = ({navigation}) => {
     )
   }
 
+  function onBarCodeRead(result) {
+    console.log(result.data)
+
+  }
+
   return (
     <View 
       style={{flex: 1, backgroundColor: COLORS.transparent}}
@@ -193,6 +198,7 @@ const Scan = ({navigation}) => {
         captureAudio={false}
         type={RNCamera.Constants.Type.back}
         flashMode={RNCamera.Constants.FlashMode.off}
+        onBarCodeRead={onBarCodeRead}
         androidCameraPermissionOptions={{
           title: 'Permission to use camera',
           message: 'Camera is required to code scanning',
