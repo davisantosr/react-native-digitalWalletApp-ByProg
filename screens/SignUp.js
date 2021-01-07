@@ -143,11 +143,59 @@ const SignUp = () => {
                 <Text style={{color:COLORS.white, ...FONTS.body3}}>US+1</Text>
               </View>
             </TouchableOpacity>
-          </View>
 
+            <TextInput
+              style={{
+                flex: 1, 
+                marginVertical: SIZES.padding, 
+                borderBottomColor: COLORS.white, 
+                borderBottomWidth: 1, 
+                height: 40, 
+                color: COLORS.white, 
+                ...FONTS.body3
+              }}
+              placeholder={'Enter Phone Number'}
+              placeholderTextColor={COLORS.white}
+              selectionColor={COLORS.white}
+            />
+
+          </View>
         </View>
 
+        {/* Password */}
+        <View style={{marginTop: SIZES.padding*2}}>
+          <Text style={{color: COLORS.lightGreen, ...FONTS.body3}}>Password</Text>
+          <TextInput 
+            style={{
+              marginVertical: SIZES.padding, 
+              borderBottomColor: COLORS.white, 
+              borderBottomWidth: 1, 
+              height: 40, 
+              color: COLORS.white,
+              ...FONTS.body3
+            }}
+            placeholder={'Password'}
+            placeholderTextColor={COLORS.white}
+            selectionColor={COLORS.white}
+            secureTextEntry={true}
+          />
+          <TouchableOpacity
+            style={{
+              position: 'absolute',
+              right: 0, 
+              bottom: 10, 
+              height: 30, 
+              width: 30,
+            }}
+            onPress={() => console.log('Toggle password visib')}
+          >
+            <Image 
+              source={icons.eye}
+              style={{height: 20, width: 20, tintColor: COLORS.white}}
+            />
+          </TouchableOpacity>
 
+        </View>
       </View>
     )
   }
