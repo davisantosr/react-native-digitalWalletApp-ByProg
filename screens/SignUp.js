@@ -41,7 +41,8 @@ const SignUp = () => {
         <Text
           style={{
             marginLeft: SIZES.padding *1.5,
-            tintColor: COLORS.white,
+            color: COLORS.white, 
+            ...FONTS.h4
           }}
         >
           Sign Up
