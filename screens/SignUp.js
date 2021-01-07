@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { 
   View, 
   Text,
@@ -19,6 +19,34 @@ import { COLORS, SIZES, FONTS,  icons, images, } from '../constants'
 const SignUp = () => {
 
   const [showPassword, setShowPassword] = useState(false)
+  const [areas, setAreas] = useState([])
+  const [selectedArea, setSelectedArea] = useState(null)
+  const [modalVisible, setModalVisible] = useState(false)
+
+  useEffect(() => {
+    fetch('https://restcountries.eu/rest/v2/all')
+      .then(response => response.json())
+      .then(data => {
+        let areaData = data.map(item => {
+          return {
+            code: item.alpha2Code, 
+            name: item.name, 
+            callingCodes: `+${item.callingCodes[0]}`,
+            flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`
+          }
+        })
+
+        setAreas(areaData)
+
+        if(areaData.length > 0) {
+          let defaultData = areaData.filter(a => a.code == 'US')
+
+          if(defaultData.length > 0) {
+            setSelectedArea(defaultData)
+          }
+        }
+      })
+  }, [])
 
   function renderHeader() {
     return (
@@ -133,7 +161,7 @@ const SignUp = () => {
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
                 <Image 
-                  source={images.usFlag}
+                  source={{uri: selectedArea?.flag}}
                   resizeMode={'contain'}
                   style={{
                     width: 30,
@@ -142,7 +170,7 @@ const SignUp = () => {
                 />                
               </View>
               <View style={{justifyContent: 'center', marginLeft: 5}}>
-                <Text style={{color:COLORS.white, ...FONTS.body3}}>US+1</Text>
+                <Text style={{color:COLORS.white, ...FONTS.body3}}>{selectedArea?.callingCodes}</Text>
               </View>
             </TouchableOpacity>
 
