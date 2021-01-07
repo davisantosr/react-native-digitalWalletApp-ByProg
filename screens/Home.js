@@ -102,7 +102,21 @@ const Home = () => {
   const [features, setFeatures] = React.useState(featuresData)
   const [specialPromos, setSpecialPromos] = React.useState(specialPromoData)
 
+
+  function renderHeader() {
+    return (
+      <View>
+        <Text>renderHeader</Text>
+      </View>
+    )
+  }
+
   function renderPromos() {
+    const HeaderComponent = () => (
+      <View>
+        {renderHeader()}
+      </View>
+    )
     const renderItem = ({item}) => (
 
       <TouchableOpacity
@@ -148,6 +162,7 @@ const Home = () => {
     )
     return(
       <FlatList 
+        ListHeaderComponent={HeaderComponent}
         contentContainerStyle={{paddingHorizontal: SIZES.padding *3}}
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
