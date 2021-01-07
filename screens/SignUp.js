@@ -38,8 +38,39 @@ const SignUp = () => {
             tintColor: COLORS.white
           }}
         />
+        <Text
+          style={{
+            marginLeft: SIZES.padding *1.5,
+            tintColor: COLORS.white,
+          }}
+        >
+          Sign Up
+        </Text>
 
       </TouchableOpacity>
+    )
+  }
+
+  function renderLogo() {
+    return(
+      <View
+        style={{
+          marginTop: SIZES.padding * 5, 
+          height: 100, 
+          alignItems: 'center', 
+          justifyContent: 'center'
+        }}
+      >
+
+        <Image 
+          source={images.wallieLogo}
+          resizeMode={'contain'}
+          style={{
+            width: '60%'
+          }}
+        />
+
+      </View>
     )
   }
 
@@ -54,6 +85,7 @@ const SignUp = () => {
       >
         <ScrollView>
           {renderHeader()}
+          {renderLogo()}
         </ScrollView>
 
       </LinearGradient>
